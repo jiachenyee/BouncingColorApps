@@ -11,6 +11,9 @@
 		323F2AB32C2E87BB002FE6EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F2AB22C2E87BB002FE6EF /* ViewController.swift */; };
 		323F2AB52C2E87BC002FE6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323F2AB42C2E87BC002FE6EF /* Assets.xcassets */; };
 		323F2AB82C2E87BC002FE6EF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 323F2AB72C2E87BC002FE6EF /* Base */; };
+		323F2AC02C2E8DBF002FE6EF /* AppRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F2ABF2C2E8DBE002FE6EF /* AppRecord.swift */; };
+		323F2AC22C2E8EA1002FE6EF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F2AC12C2E8EA1002FE6EF /* AppColor.swift */; };
+		323F2AC42C2EBAB3002FE6EF /* BouncingIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F2AC32C2EBAB3002FE6EF /* BouncingIntents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		323F2AB42C2E87BC002FE6EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323F2AB72C2E87BC002FE6EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		323F2AB92C2E87BC002FE6EF /* BouncingColorApps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BouncingColorApps.entitlements; sourceTree = "<group>"; };
+		323F2ABF2C2E8DBE002FE6EF /* AppRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRecord.swift; sourceTree = "<group>"; };
+		323F2AC12C2E8EA1002FE6EF /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		323F2AC32C2EBAB3002FE6EF /* BouncingIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BouncingIntents.swift; path = ../BouncingIntents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +58,11 @@
 		323F2AAF2C2E87BB002FE6EF /* BouncingColorApps */ = {
 			isa = PBXGroup;
 			children = (
+				323F2AC32C2EBAB3002FE6EF /* BouncingIntents.swift */,
 				323F2AB02C2E87BB002FE6EF /* AppDelegate.swift */,
 				323F2AB22C2E87BB002FE6EF /* ViewController.swift */,
+				323F2ABF2C2E8DBE002FE6EF /* AppRecord.swift */,
+				323F2AC12C2E8EA1002FE6EF /* AppColor.swift */,
 				323F2AB42C2E87BC002FE6EF /* Assets.xcassets */,
 				323F2AB62C2E87BC002FE6EF /* Main.storyboard */,
 				323F2AB92C2E87BC002FE6EF /* BouncingColorApps.entitlements */,
@@ -132,7 +141,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				323F2AB32C2E87BB002FE6EF /* ViewController.swift in Sources */,
+				323F2AC42C2EBAB3002FE6EF /* BouncingIntents.swift in Sources */,
+				323F2AC22C2E8EA1002FE6EF /* AppColor.swift in Sources */,
 				323F2AB12C2E87BB002FE6EF /* AppDelegate.swift in Sources */,
+				323F2AC02C2E8DBF002FE6EF /* AppRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +292,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -307,6 +320,7 @@
 				DEVELOPMENT_TEAM = 9W63WN9LG4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
