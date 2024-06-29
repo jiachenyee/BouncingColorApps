@@ -7,8 +7,10 @@
 
 import Foundation
 import AppKit
+import AppIntents
 
-enum AppColor: CaseIterable {
+enum AppColor: String, CaseIterable, Hashable, Sendable {
+    
     case black
     case red
     case yellow
@@ -55,5 +57,30 @@ enum AppColor: CaseIterable {
         }
         
         return color
+    }
+}
+
+extension AppColor: AppEnum {
+    static var typeDisplayRepresentation: TypeDisplayRepresentation {
+        TypeDisplayRepresentation(stringLiteral: "Color")
+    }
+    
+    static var caseDisplayRepresentations: [AppColor : DisplayRepresentation] {
+        [
+            .black: DisplayRepresentation(title: "Black",
+                                          subtitle: "Show black app icons"),
+            .red: DisplayRepresentation(title: "Red",
+                                        subtitle: "Show red app icons"),
+            .yellow: DisplayRepresentation(title: "Yellow",
+                                           subtitle: "Show yellow app icons"),
+            .green: DisplayRepresentation(title: "Green",
+                                          subtitle: "Show green app icons"),
+            .blue: DisplayRepresentation(title: "Blue",
+                                         subtitle: "Show blue app icons"),
+            .purple: DisplayRepresentation(title: "Purple",
+                                           subtitle: "Show purple app icons"),
+            .white: DisplayRepresentation(title: "White",
+                                          subtitle: "Show white app icons")
+        ]
     }
 }

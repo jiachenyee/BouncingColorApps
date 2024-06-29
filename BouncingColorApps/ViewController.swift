@@ -11,6 +11,7 @@ import SpriteKit
 
 class ViewController: NSViewController {
 
+    let colorManager = ColorsManager.shared
     
     let appIconSize: CGFloat = 128
     
@@ -20,11 +21,12 @@ class ViewController: NSViewController {
     
     var screenSize: CGSize!
     
+    var allApps: [AppRecord] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         
         screenSize = NSScreen.main!.frame.size
         
@@ -38,31 +40,14 @@ class ViewController: NSViewController {
             return event
         }
         
-//        let allApps = getAllApps()
-//        
-//        for app in allApps {
-//            
-//            if app.colors.contains(.green) {
-//                createAppIconNode(app: app)
-//            }
-//        }
-        let allApps = getAllApps()
+        allApps = getAllApps()
         
-        var count = 0
+        let candidateColors = Set(colorManager.colors)
         
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            for app in allApps {
-                if app.colors.contains(AppColor.allCases[count]) {
-                    self.createAppIconNode(app: app)
-                }
-                
+        for app in allApps {
+            if !Set(app.colors).intersection(candidateColors).isEmpty {
+                self.createAppIconNode(app: app)
             }
-            
-            
-            count += 1
-            
-            if count == 7 { timer.invalidate() }
-            
         }
     }
     
@@ -221,9 +206,13 @@ class ViewController: NSViewController {
               let nodeName = selectedNode.name,
               let url = URL(string: nodeName) else { return }
         
+        selectedNode.run(.scale(by: 2, duration: 1))
+        
         dismiss()
         
-        NSWorkspace.shared.open(url)
+        DispatchQueue.global(qos: .userInitiated).async {
+            NSWorkspace.shared.open(url)
+        }
     }
     
     func createAppIconNode(app: AppRecord) {
@@ -277,3 +266,10 @@ class ViewController: NSViewController {
     }
 }
 
+extension ViewController: ColorManagerDelegate {
+    func displayNewColor(_ color: AppColor) {
+        for app in allApps where app.colors.contains(color) {
+            createAppIconNode(app: app)
+        }
+    }
+}

@@ -6,15 +6,16 @@
 //
 
 import Cocoa
+import AppIntents
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        AppDependencyManager.shared.add(dependency: ColorsManager.shared)
+        
+        IntentProvider.updateAppShortcutParameters()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
