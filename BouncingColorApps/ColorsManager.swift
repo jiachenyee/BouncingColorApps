@@ -12,7 +12,7 @@ import Observation
 @MainActor
 class ColorsManager {
     
-    var colors: [AppColor] = [.green, .yellow]
+    var colors: [AppColor] = []
     var colorManagerDelegate: ColorManagerDelegate?
     
     init() {
@@ -21,6 +21,7 @@ class ColorsManager {
     
     func showColor(_ color: AppColor) {
         colors.append(color)
+        print(colors)
         colorManagerDelegate?.displayNewColor(color)
     }
     

@@ -41,14 +41,6 @@ class ViewController: NSViewController {
         }
         
         allApps = getAllApps()
-        
-        let candidateColors = Set(colorManager.colors)
-        
-        for app in allApps {
-            if !Set(app.colors).intersection(candidateColors).isEmpty {
-                self.createAppIconNode(app: app)
-            }
-        }
     }
     
     override func viewDidAppear() {
@@ -80,6 +72,14 @@ class ViewController: NSViewController {
         window.isMovable = false
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
+        
+        let candidateColors = Set(colorManager.colors)
+        
+        for app in allApps {
+            if !Set(app.colors).intersection(candidateColors).isEmpty {
+                self.createAppIconNode(app: app)
+            }
+        }
     }
     
     func getAllApps() -> [AppRecord] {

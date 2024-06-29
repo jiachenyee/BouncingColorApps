@@ -18,8 +18,8 @@ struct IntentProvider: AppShortcutsProvider {
 
 
 struct BouncingIntent: AppIntent {
-    static var title: LocalizedStringResource = "Red"
-    static var description = IntentDescription("Show red icons")
+    static var title: LocalizedStringResource = "Show app icons"
+    static var description = IntentDescription("Show app icons of a specific color")
     
     static var openAppWhenRun: Bool = true
     
@@ -29,9 +29,10 @@ struct BouncingIntent: AppIntent {
     @Dependency
     private var colorsToDisplay: ColorsManager
     
+    @MainActor
     func perform() async throws -> some ReturnsValue {
         // run the function to do red
-        
+        colorsToDisplay.showColor(color)
         return .result()
     }
 }
