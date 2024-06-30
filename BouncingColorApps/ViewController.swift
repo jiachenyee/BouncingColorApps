@@ -119,7 +119,7 @@ class ViewController: NSViewController {
         let filesInDirectory = try FileManager.default.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
         
         return filesInDirectory.flatMap { file in
-            guard file.path().hasSuffix(".app/") else {
+            guard file.lastPathComponent.hasSuffix(".app") else {
                 return (try? extractIcons(from: file)) ?? []
             }
             
@@ -147,9 +147,6 @@ class ViewController: NSViewController {
         
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
-        var redSum = 0.0
-        var greenSum = 0.0
-        var blueSum = 0.0
         var sumOfAllColors = 0
         
         var colorsCount = [AppColor: Int]()
