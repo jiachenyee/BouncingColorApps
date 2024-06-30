@@ -28,7 +28,7 @@ class ViewController: NSViewController {
         
         // Do any additional setup after loading the view.
         
-        screenSize = NSScreen.main!.frame.size
+        screenSize = getCurrentMouseDisplayRect()!.size
         
         setUpSpriteView()
         
@@ -67,8 +67,7 @@ class ViewController: NSViewController {
         
         window.isMovableByWindowBackground = false
         
-        #warning("this might give us problems, maybe find current monitor???????? future me problems lol")
-        window.setFrame(NSScreen.main!.frame, display: true)
+        window.setFrame(getCurrentMouseDisplayRect()!, display: true)
         window.isMovable = false
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
@@ -308,5 +307,17 @@ class ViewController: NSViewController {
         }) {
             NSApplication.shared.terminate(self)
         }
+    }
+    
+    func getCurrentMouseDisplayRect() -> CGRect? {
+        let mouseLocation = NSEvent.mouseLocation
+        
+        for screen in NSScreen.screens {
+            if screen.frame.contains(mouseLocation) {
+                return screen.frame
+            }
+        }
+        
+        return nil
     }
 }
