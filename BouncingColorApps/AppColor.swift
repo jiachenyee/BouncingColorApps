@@ -26,7 +26,7 @@ enum AppColor: String, CaseIterable, Hashable, Sendable {
         
         var color: [Self] = []
         
-        if saturation > 0.2 && brightness > 0.07 {
+        if saturation > 0.1 && brightness > 0.07 {
             if 0.84...1 ~= hue || 0...0.084 ~= hue {
                 color.append(.red)
             }
@@ -52,7 +52,7 @@ enum AppColor: String, CaseIterable, Hashable, Sendable {
             color.append(.black)
         }
         
-        if brightness >= 0.5 && saturation < 0.5 {
+        if brightness >= 0.5 && saturation <= 0.1 {
             color.append(.white)
         }
         

@@ -145,7 +145,19 @@ class ViewController: NSViewController {
         var redSum = 0.0
         var greenSum = 0.0
         var blueSum = 0.0
-        var pixelCount = 0
+        var sumOfAllColors = 0
+        
+        var colorsCount = [AppColor: Int]()
+        
+        colorsCount = [
+            .red: 0,
+            .yellow: 0,
+            .green: 0,
+            .blue: 0,
+            .purple: 0,
+            .black: 0,
+            .white: 0
+        ]
         
         for x in 0..<Int(smallestImageSize) {
             for y in 0..<Int(smallestImageSize) {
@@ -156,18 +168,39 @@ class ViewController: NSViewController {
                 let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
                 let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
                 
-                redSum += r
-                greenSum += g
-                blueSum += b
-                pixelCount += 1
+                let pixelRGB = NSColor(red: r, green: g, blue: b, alpha: 1)
+                let pixelColor = AppColor.from(color: pixelRGB)
+                
+                for color in pixelColor {
+                    colorsCount[color]? += 1
+                }
+                
+                sumOfAllColors += pixelColor.count
             }
         }
         
-        let averageColor = NSColor(red: redSum / Double(pixelCount), green: greenSum / Double(pixelCount), blue: blueSum / Double(pixelCount), alpha: 1)
+        var appColors: [AppColor] = []
         
-        print(averageColor.hueComponent, averageColor.saturationComponent, averageColor.brightnessComponent)
+        let sortedColorsCount = colorsCount.sorted { $0.1 > $1.1 }
         
-        return AppColor.from(color: averageColor)
+        var percentageTaken = 0.0
+        
+        for (colorName, colorCount) in sortedColorsCount {
+            if percentageTaken < 0.3 {
+                appColors.append(colorName)
+                percentageTaken += Double(colorCount) / Double(sumOfAllColors)
+            }
+            else {
+                break
+            }
+        }
+        
+//        
+//        let averageColor = NSColor(red: redSum / Double(pixelCount), green: greenSum / Double(pixelCount), blue: blueSum / Double(pixelCount), alpha: 1)
+//        
+//        print(averageColor.hueComponent, averageColor.saturationComponent, averageColor.brightnessComponent)
+        
+        return appColors // AppColor.from(color: averageColor)
     }
     
     func setUpSpriteView() {
