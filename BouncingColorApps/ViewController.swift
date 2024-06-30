@@ -23,6 +23,10 @@ class ViewController: NSViewController {
     
     var allApps: [AppRecord] = []
     
+    
+    var selectedDraggingNode:SKNode?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +77,7 @@ class ViewController: NSViewController {
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
+        colorManager.colors.append(.white)
         displayColors()
     }
     
@@ -242,6 +247,44 @@ class ViewController: NSViewController {
         
         skView.scene?.addChild(node)
     }
+    
+    @IBAction func onPan(_ sender: NSPanGestureRecognizer) {
+        let location = sender.location(in: skView)
+        
+        switch sender.state {
+
+            
+        case .began:
+            let nodes = skView.scene?.nodes(at: location).sorted(by: { node1, node2 in
+                node1.zPosition > node2.zPosition
+            })
+            if (nodes?.first?.name) != nil {
+                self.selectedDraggingNode = nodes?.first
+                self.selectedDraggingNode?.physicsBody?.isDynamic = false
+            }
+            
+        case .changed:
+            let translation = sender.translation(in: skView)
+            
+            if let position = self.selectedDraggingNode?.position {
+                self.selectedDraggingNode?.position = CGPoint(x: position.x + translation.x, y: position.y + translation.y)
+                sender.setTranslation(CGPoint.zero, in: sender.view)
+                
+            }
+            
+            
+        case .ended:
+            self.selectedDraggingNode?.physicsBody?.isDynamic = true;
+            let velocity = sender.velocity(in: sender.view)
+            self.selectedDraggingNode?.physicsBody?.applyImpulse(CGVector(dx: velocity.x, dy: velocity.y))
+            
+            self.selectedDraggingNode = nil
+            
+        default:
+            break
+        }
+    }
+
     
     @IBAction func onClick(_ sender: NSClickGestureRecognizer) {
         let location = sender.location(in: skView)
