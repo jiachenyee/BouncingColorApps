@@ -73,11 +73,25 @@ class ViewController: NSViewController {
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
-        let candidateColors = Set(colorManager.colors)
-        
-        for app in allApps {
-            if !Set(app.colors).intersection(candidateColors).isEmpty {
-                self.createAppIconNode(app: app)
+        displayColors()
+    }
+    
+    func displayColors() {
+        if skView.scene?.children.count ?? 0 > 3 { return }
+        if !colorManager.colors.isEmpty {
+            let candidateColors = Set(colorManager.colors)
+            
+            for app in allApps {
+                if !Set(app.colors).intersection(candidateColors).isEmpty {
+                    self.createAppIconNode(app: app)
+                }
+            }
+        } else {
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                if !self.colorManager.colors.isEmpty {
+                    timer.invalidate()
+                    self.displayColors()
+                }
             }
         }
     }
@@ -263,14 +277,6 @@ class ViewController: NSViewController {
             self.skView.animator().alphaValue = 0
         }) {
             NSApplication.shared.terminate(self)
-        }
-    }
-}
-
-extension ViewController: ColorManagerDelegate {
-    func displayNewColor(_ color: AppColor) {
-        for app in allApps where app.colors.contains(color) {
-            createAppIconNode(app: app)
         }
     }
 }

@@ -13,7 +13,6 @@ import Observation
 class ColorsManager {
     
     var colors: [AppColor] = []
-    var colorManagerDelegate: ColorManagerDelegate?
     
     init() {
         

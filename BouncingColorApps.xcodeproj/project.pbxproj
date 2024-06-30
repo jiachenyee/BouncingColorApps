@@ -15,7 +15,6 @@
 		323F2AC22C2E8EA1002FE6EF /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F2AC12C2E8EA1002FE6EF /* AppColor.swift */; };
 		32679C562C2F8378001A0FCD /* BouncingIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32679C552C2F8378001A0FCD /* BouncingIntent.swift */; };
 		32679C582C2F8766001A0FCD /* ColorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32679C572C2F8766001A0FCD /* ColorsManager.swift */; };
-		32679C5A2C2F89AA001A0FCD /* ColorManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32679C592C2F89AA001A0FCD /* ColorManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		323F2AC12C2E8EA1002FE6EF /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		32679C552C2F8378001A0FCD /* BouncingIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncingIntent.swift; sourceTree = "<group>"; };
 		32679C572C2F8766001A0FCD /* ColorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsManager.swift; sourceTree = "<group>"; };
-		32679C592C2F89AA001A0FCD /* ColorManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +62,6 @@
 			children = (
 				323F2AB02C2E87BB002FE6EF /* AppDelegate.swift */,
 				323F2AB22C2E87BB002FE6EF /* ViewController.swift */,
-				32679C592C2F89AA001A0FCD /* ColorManagerDelegate.swift */,
 				32679C552C2F8378001A0FCD /* BouncingIntent.swift */,
 				32679C572C2F8766001A0FCD /* ColorsManager.swift */,
 				323F2ABF2C2E8DBE002FE6EF /* AppRecord.swift */,
@@ -150,7 +147,6 @@
 				32679C562C2F8378001A0FCD /* BouncingIntent.swift in Sources */,
 				323F2AC22C2E8EA1002FE6EF /* AppColor.swift in Sources */,
 				32679C582C2F8766001A0FCD /* ColorsManager.swift in Sources */,
-				32679C5A2C2F89AA001A0FCD /* ColorManagerDelegate.swift in Sources */,
 				323F2AB12C2E87BB002FE6EF /* AppDelegate.swift in Sources */,
 				323F2AC02C2E8DBF002FE6EF /* AppRecord.swift in Sources */,
 			);
