@@ -91,23 +91,24 @@ class ViewController: NSViewController {
         
         let allApps = homeDirectoryApplicationsDirectoryApps + applicationsDirectoryApps
         
-        return allApps
+        return allApps.filter { app in
+            !(app.name.hasPrefix("Show ") && app.name.hasSuffix(" Icons"))
+        }
     }
     
     func extractIcons(from directoryURL: URL) throws -> [AppRecord] {
         let filesInDirectory = try FileManager.default.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
         
-        return filesInDirectory.compactMap { file in
+        return filesInDirectory.flatMap { file in
             guard file.path().hasSuffix(".app/") else {
-                return nil
+                return (try? extractIcons(from: file)) ?? []
             }
             
             let iconImage = NSWorkspace.shared.icon(forFile: file.path(percentEncoded: false))
             
-            print(file)
             let colors = getIconColors(image: iconImage)
-                        
-            return AppRecord(url: file, image: iconImage, colors: colors)
+            
+            return [AppRecord(url: file, image: iconImage, colors: colors)]
         }
     }
     
