@@ -21,8 +21,6 @@ class ColorsManager {
     
     func showColor(_ color: AppColor) {
         colors.append(color)
-        print(colors)
-        colorManagerDelegate?.displayNewColor(color)
     }
     
     static let shared = ColorsManager()
