@@ -76,7 +76,6 @@ class ViewController: NSViewController {
         window.titleVisibility = .hidden
         window.makeKeyAndOrderFront(nil)
         
-        colorManager.colors.append(.white)
         displayColors()
     }
     
