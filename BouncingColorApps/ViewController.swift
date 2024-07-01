@@ -247,8 +247,6 @@ class ViewController: NSViewController {
         let location = sender.location(in: skView)
         
         switch sender.state {
-
-            
         case .began:
             let nodes = skView.scene?.nodes(at: location).sorted(by: { node1, node2 in
                 node1.zPosition > node2.zPosition
@@ -274,6 +272,14 @@ class ViewController: NSViewController {
             self.selectedDraggingNode?.physicsBody?.applyImpulse(CGVector(dx: velocity.x, dy: velocity.y))
             
             self.selectedDraggingNode = nil
+            
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [self] _ in
+                let boxRect = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height + 800)
+                
+                for node in self.skView.scene?.children ?? [] where !boxRect.contains(node.position) {
+                    node.run(.move(to: CGPoint(x: .random(in: appIconSize..<((screenSize.width) - appIconSize)), y: screenSize.height + .random(in: appIconSize...500)), duration: 0))
+                }
+            }
             
         default:
             break
