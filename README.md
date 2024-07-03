@@ -26,7 +26,7 @@ yes! of course it launches apps
 1. run the app
 2. see that nothing shows up.
 3. now press the spacebar
-4. create a shortcut called "Show White Icons"
+4. create a shortcut called "Show White Icons" (if you follow this format, the app icon will be automatically omitted)
 5. use the Show App Icons thing Shortcut action
 6. set the "color" parameter to white  ![a screenshot of the shortcuts app with the BouncingColorApps shortcut with the color parameter set to white](https://github.com/jiachenyee/BouncingColorApps/assets/36725840/c196daff-ebfe-4222-871f-dbfec1538580)
 8. add it to your dock
@@ -43,3 +43,4 @@ the default shortcuts dock icons don't match well
 ### other notes
 - to hide, use any key on your keyboard
 - click on an app icon to launch it
+- if the shortcut isnt showing up in the shortcuts app, try restarting your device
