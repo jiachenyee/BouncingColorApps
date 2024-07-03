@@ -44,3 +44,4 @@ the default shortcuts dock icons don't match well
 - to hide, use any key on your keyboard
 - click on an app icon to launch it
 - if the shortcut isnt showing up in the shortcuts app, try restarting your device
+- hold down shift to activate slingshot mode to launch app icons!!
