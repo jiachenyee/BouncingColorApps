@@ -264,12 +264,18 @@ class ViewController: NSViewController {
                 sender.setTranslation(CGPoint.zero, in: sender.view)
                 
             }
-            
-            
         case .ended:
-            self.selectedDraggingNode?.physicsBody?.isDynamic = true;
+            self.selectedDraggingNode?.physicsBody?.isDynamic = true
+            
             let velocity = sender.velocity(in: sender.view)
-            self.selectedDraggingNode?.physicsBody?.applyImpulse(CGVector(dx: velocity.x, dy: velocity.y))
+            
+            if NSEvent.modifierFlags.contains(.shift) {
+                let multiplier = -1.5
+                let slingshotImpulse = CGVector(dx: velocity.x * multiplier, dy: velocity.y * multiplier)
+                self.selectedDraggingNode?.physicsBody?.applyImpulse(slingshotImpulse)
+            } else {
+                self.selectedDraggingNode?.physicsBody?.applyImpulse(CGVector(dx: velocity.x, dy: velocity.y))
+            }
             
             self.selectedDraggingNode = nil
             
